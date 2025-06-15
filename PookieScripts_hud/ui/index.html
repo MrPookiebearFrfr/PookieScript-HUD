@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hud-container" id="hudBox">
+    <div class="hud-line"><span class="hud-label">AOP:</span> <span id="aop" class="hud-value">Sandy Shores</span></div>
+    <div class="hud-line"><span class="hud-label">Priority:</span> <span id="priority" class="hud-value hud-prio-available">Available</span></div>
+    <div class="hud-line"><span class="hud-label">Nearby Postal:</span> <span id="postal" class="hud-value">(N/A)</span></div>
+    <!-- Street removed -->
+    <div class="hud-line" id="zone"></div>
+    <div class="hud-line" id="speed"></div>
+  </div>
+  <script>
+    window.addEventListener('message', function (event) {
+      if (event.data.type === "updateHUD") {
+        if (event.data.aop !== undefined) document.getElementById('aop').textContent = event.data.aop;
+        if (event.data.priority !== undefined) {
+          const prio = document.getElementById('priority');
+          prio.textContent = event.data.priority.text;
+          prio.className = 'hud-value ' + event.data.priority.class;
+        }
+        if (event.data.postal !== undefined) document.getElementById('postal').textContent = `(${event.data.postal})`;
+        // location removed
+        if (event.data.zone !== undefined) document.getElementById('zone').textContent = event.data.zone;
+        if (event.data.speed !== undefined) document.getElementById('speed').textContent = event.data.speed;
+      }
+    });
+  </script>
+</body>
+</html>
+          if (event.data.priority !== undefined) {
+            const prio = document.getElementById('priority');
+            prio.textContent = event.data.priority.text;
+            prio.className = 'hud-value ' + event.data.priority.class;
+          }
+          if (event.data.postal !== undefined) document.getElementById('postal').textContent = `(${event.data.postal})`;
+          if (event.data.location !== undefined) document.getElementById('location').textContent = event.data.location || "";
+          if (event.data.zone !== undefined) document.getElementById('zone').textContent = event.data.zone;
+          if (event.data.speed !== undefined) document.getElementById('speed').textContent = event.data.speed;
+        }
+      });
+    </script>
+  </body>
+</html>
+            prio.textContent = event.data.priority.text;
+            prio.className = 'hud-value ' + event.data.priority.class;
+          }
+          if (event.data.postal !== undefined) document.getElementById('postal').textContent = `(${event.data.postal})`;
+          if (event.data.location !== undefined) document.getElementById('location').textContent = event.data.location || "";
+          if (event.data.zone !== undefined) document.getElementById('zone').textContent = event.data.zone;
+          if (event.data.speed !== undefined) document.getElementById('speed').textContent = event.data.speed;
+        }
+      });
+    </script>
+  </body>
+</html>
